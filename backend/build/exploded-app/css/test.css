@@ -1,0 +1,12 @@
+#Main {
+　padding-bottom: 100px;
+}
+#Footer {
+　height: 100px;
+　position: static;
+　margin-top: -100px;
+}
+
+body {
+    margin-top: 500px
+}
