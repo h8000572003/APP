@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<ui:composition template="/pages/template/default.xhtml">
+
+    <p:remoteCommand name="updateView" update="myForm"></p:remoteCommand>
+    <ui:define name="content" >
+        <h:form id="myForm">
+
+            <b:well>
+                <h3>使用者查詢與設定</h3>
+                <b:panelGrid colSpans="2,2,2,2,4">
+                     
+                    <h:outputText value="帳號："/>
+                    <b:inputText value="#{settingUserBean.dto.id}"></b:inputText>
+
+                </b:panelGrid>
+
+                <b:commandButton value="查詢"
+                                 action="#{settingUserBean.query}"></b:commandButton>
+
+
+                <p:dataTable var="user" value="#{settingUserBean.dto.queryList}"
+                             selectionMode="single"
+                             selection="#{settingUserBean.dto.selectUserRecord}" rowKey="#{user.id}"
+                >
+
+                    <p:column selectionMode="single" style="width:30px;text-align:center"/>
+                    <p:column headerText="帳號">
+                        <h:outputText value="#{user.id}"/>
+                    </p:column>
+
+                    <p:column headerText="名稱">
+                        <h:outputText value="#{user.name}"/>
+                    </p:column>
+
+                    <f:facet name="footer">
+                        <p:commandButton update="myForm"
+                                         icon="ui-icon-search" value="View"
+                                         oncomplete="PF('dialog').show()"/>
+                    </f:facet>
+
+                </p:dataTable>
+            </b:well>
+
+            <p:dialog header="詳細資料" widgetVar="dialog" modal="true" showEffect="fade"
+                      hideEffect="fade" resizable="false" width="200">
+                <p:outputPanel id="detail" style="text-align:center;">
+                    <b:panelGrid colSpans="2,2,2,2,4">
+
+                        <h:outputText value="Id:"/>
+                        <h:outputText value="#{settingUserBean.dto.selectUserRecord.id}"/>
+
+                        <h:outputText value="level"/>
+                        <h:outputText value="#{settingUserBean.dto.selectUserRecord.level}"/>
+
+                        <h:outputText value="name:"/>
+                        <h:outputText value="#{settingUserBean.dto.selectUserRecord.name}"/>
+
+                        <h:outputText value="regId"/>
+                        <h:outputText value="#{settingUserBean.dto.selectUserRecord.regId}"/>
+                    </b:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+        </h:form>
+
+
+    </ui:define>
+
+
+</ui:composition>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<ui:composition template="/pages/template/default.xhtml">
+
+    <ui:define name="content">
+        <h:form>
+
+            <b:well>
+                <h3>使用者註冊</h3>
+
+
+                <b:panelGrid colSpans="2,2,2,2,4">
+                    <h:outputLabel value="帳號" for="id"/>
+                    <b:inputText id="id" value=
+                        "#{registUserBean.dto.id}"></b:inputText>
+
+                    <h:outputLabel value="密碼" for="password"/>
+                    <b:inputSecret id="password" value=
+                        "#{registUserBean.dto.password}"></b:inputSecret>
+
+                    <h:outputLabel value="名稱" for="name"/>
+                    <b:inputText
+                        value="#{registUserBean.dto.name}" id="name"></b:inputText>
+
+                    <h:outputLabel value="權限:" for="level"/>
+                    <b:selectOneMenu value="#{registUserBean.dto.level}" id="level">
+                        <f:selectItem itemLabel="管理員" itemValue="-1"/>
+                        <f:selectItem itemLabel="老闆" itemValue="1"/>
+                        <f:selectItem itemLabel="員工" itemValue="2"/>
+                    </b:selectOneMenu>
+
+
+                </b:panelGrid>
+
+
+                <b:commandButton value="註冊"
+                                 action="#{registUserBean.registUser}"></b:commandButton>
+
+
+
+
+            </b:well>
+
+        </h:form>
+
+
+    </ui:define>
+
+
+</ui:composition>
+</html>
