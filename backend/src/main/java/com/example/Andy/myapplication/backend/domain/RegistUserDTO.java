@@ -10,7 +10,8 @@ public class RegistUserDTO implements Serializable {
     private String password = "";
     private String name = "";
 
-    private int level;
+
+    private String level;
 
     public String getId() {
         return id;
@@ -36,11 +37,11 @@ public class RegistUserDTO implements Serializable {
         this.name = name;
     }
 
-    public int getLevel() {
+    public java.lang.String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(java.lang.String level) {
         this.level = level;
     }
 }

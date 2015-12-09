@@ -4,6 +4,8 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
+import java.io.Serializable;
+
 /**
  * 使用者資訊
  * Created by Andy on 2015/12/1.
@@ -11,7 +13,7 @@ import com.googlecode.objectify.annotation.Index;
 
 
 @Entity
-public class UserRecord {
+public class UserRecord implements Serializable {
 
     @Id
     private String id = "";
@@ -22,8 +24,14 @@ public class UserRecord {
 
     private String password = "";
 
+    /**
+     * 階級
+     * <li>0:管理員</li>
+     * <li>1:老闆</li>
+     * <li>2:員工</li>
+     */
     @Index
-    private int level;
+    private String level;
 
 
     @Index
@@ -53,11 +61,11 @@ public class UserRecord {
         this.password = password;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 

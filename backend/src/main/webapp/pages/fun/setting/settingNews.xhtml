@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+>
+
+<ui:composition template="/pages/template/default.xhtml">
+
+    <p:remoteCommand name="updateView" update="myForm"></p:remoteCommand>
+    <ui:define name="content">
+        <h:form id="myForm">
+
+            <b:well>
+                <h3>使用者查詢與設定</h3>
+
+
+                <h3></h3>
+
+                <b:panelGrid colSpans="2,10">
+                    <h:outputLabel value="建立人員："/>
+                    <b:inputText span="10"
+                                 value="#{settingNewsBean.dto.record.name}"></b:inputText>
+
+
+                    <h:outputLabel value="標題："/>
+                    <b:inputText span="10"
+                                 value="#{settingNewsBean.dto.record.title}"></b:inputText>
+
+                    <h:outputLabel value="內容："/>
+                    <b:inputText span="10" fieldSize="lg"
+                                 value="#{settingNewsBean.dto.record.content}"></b:inputText>
+
+
+                </b:panelGrid>
+
+                <b:commandButton value="新增"
+                                 action="#{settingNewsBean.addMessage}"></b:commandButton>
+
+
+            </b:well>
+
+
+        </h:form>
+
+
+    </ui:define>
+
+
+</ui:composition>
+</html>

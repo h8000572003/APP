@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/wxyi_R5Ej2om0tvdMEUyfX4yyrI\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/cnrNaCI84xBPElRhSuTMGqUY0co\"",
  "discoveryVersion": "v1",
  "id": "common:v1",
  "name": "common",
@@ -13,9 +13,9 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myApplicationId.appspot.com/_ah/api/common/v1/insetNews/",
+ "baseUrl": "https://master-smithy-691.appspot.com/_ah/api/common/v1/insetNews/",
  "basePath": "/_ah/api/common/v1/insetNews/",
- "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "rootUrl": "https://master-smithy-691.appspot.com/_ah/api/",
  "servicePath": "common/v1/insetNews/",
  "batchPath": "batch",
  "parameters": {

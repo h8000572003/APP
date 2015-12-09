@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/pkysS7yKoaggVkChtv1uMnR9Zlk\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/fsljJLbO3u6blfh_avzqKn6BTng\"",
  "discoveryVersion": "v1",
  "id": "userRecordEndpoint:v1",
  "name": "userRecordEndpoint",
@@ -13,10 +13,10 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myApplicationId.appspot.com/_ah/api/userRecordEndpoint/v1/userInfo/",
- "basePath": "/_ah/api/userRecordEndpoint/v1/userInfo/",
- "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
- "servicePath": "userRecordEndpoint/v1/userInfo/",
+ "baseUrl": "https://master-smithy-691.appspot.com/_ah/api/userRecordEndpoint/v1/userrecord/",
+ "basePath": "/_ah/api/userRecordEndpoint/v1/userrecord/",
+ "rootUrl": "https://master-smithy-691.appspot.com/_ah/api/",
+ "servicePath": "userRecordEndpoint/v1/userrecord/",
  "batchPath": "batch",
  "parameters": {
   "alt": {
@@ -81,8 +81,7 @@
      "type": "string"
     },
     "level": {
-     "type": "integer",
-     "format": "int32"
+     "type": "string"
     },
     "name": {
      "type": "string"
@@ -99,62 +98,23 @@
  "methods": {
   "getUserRecord": {
    "id": "userRecordEndpoint.getUserRecord",
-   "path": "get",
+   "path": "{id}/{password}",
    "httpMethod": "GET",
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
-     "location": "query"
+     "location": "path"
     },
     "password": {
      "type": "string",
      "required": true,
-     "location": "query"
+     "location": "path"
     }
    },
    "parameterOrder": [
     "id",
     "password"
-   ],
-   "response": {
-    "$ref": "UserRecord"
-   },
-   "scopes": [
-    "https://www.googleapis.com/auth/userinfo.email"
-   ]
-  },
-  "save": {
-   "id": "userRecordEndpoint.save",
-   "path": "save",
-   "httpMethod": "POST",
-   "parameters": {
-    "id": {
-     "type": "string",
-     "required": true,
-     "location": "query"
-    },
-    "name": {
-     "type": "string",
-     "required": true,
-     "location": "query"
-    },
-    "password": {
-     "type": "string",
-     "required": true,
-     "location": "query"
-    },
-    "regId": {
-     "type": "string",
-     "required": true,
-     "location": "query"
-    }
-   },
-   "parameterOrder": [
-    "id",
-    "name",
-    "password",
-    "regId"
    ],
    "response": {
     "$ref": "UserRecord"

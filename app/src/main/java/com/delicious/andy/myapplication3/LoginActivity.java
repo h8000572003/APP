@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,12 +29,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.delicious.andy.myapplication3.util.CommonUtils;
 import com.delicious.andy.myapplication3.util.ExecutantType;
 import com.example.andy.myapplication.backend.userRecordEndpoint.UserRecordEndpoint;
 import com.example.andy.myapplication.backend.userRecordEndpoint.model.UserRecord;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
+import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
+import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -306,6 +308,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
 
+        private final String TAG = UserLoginTask.class.getSimpleName();
         private UserRecordEndpoint service;
         private final String mEmail;
         private final String mPassword;
@@ -322,16 +325,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (service == null) {  // Only do this once
                 UserRecordEndpoint.Builder builder =
                         new UserRecordEndpoint.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
-                                .setRootUrl(CommonUtils.API_URL);
+                                .setRootUrl("http://10.0.3.2:8080/_ah/api/")
+                                .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
+                                    @Override
+                                    public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
+                                        abstractGoogleClientRequest.setDisableGZipContent(true);
+                                    }
+                                });
                 service = builder.build();
             }
             try {
 
                 UserRecord userRecord =
                         service.getUserRecord(mEmail, mPassword).execute();
+
                 if (userRecord == null) {
                     return false;
                 }
+                Log.i(TAG, "use:" + userRecord.getId());
                 ExecutantType.setUserRecord(userRecord);
                 return true;
 
@@ -353,7 +364,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
+        protected void onPostExRecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
 

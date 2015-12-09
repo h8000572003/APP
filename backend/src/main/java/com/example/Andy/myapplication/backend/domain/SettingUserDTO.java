@@ -12,8 +12,17 @@ import java.util.List;
 public class SettingUserDTO implements Serializable {
     private List<UserRecord> queryList = new ArrayList<UserRecord>();
     private String id;
-    private int level;
-    private UserRecord selectUserRecord;
+    private String level;
+    private UserRecord selectUserRecord = new UserRecord();
+    private boolean isEditMode = false;
+
+    public boolean isEditMode() {
+        return isEditMode;
+    }
+
+    public void setEditMode(boolean editMode) {
+        isEditMode = editMode;
+    }
 
     public List<UserRecord> getQueryList() {
         return queryList;
@@ -31,11 +40,11 @@ public class SettingUserDTO implements Serializable {
         this.id = id;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 

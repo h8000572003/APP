@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/pkysS7yKoaggVkChtv1uMnR9Zlk\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/fsljJLbO3u6blfh_avzqKn6BTng\"",
  "discoveryVersion": "v1",
  "id": "userRecordEndpoint:v1",
  "name": "userRecordEndpoint",
@@ -13,8 +13,8 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rpc",
- "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
- "rpcUrl": "https://myApplicationId.appspot.com/_ah/api/rpc",
+ "rootUrl": "https://master-smithy-691.appspot.com/_ah/api/",
+ "rpcUrl": "https://master-smithy-691.appspot.com/_ah/api/rpc",
  "rpcPath": "/_ah/api/rpc",
  "parameters": {
   "alt": {
@@ -79,8 +79,7 @@
      "type": "string"
     },
     "level": {
-     "type": "integer",
-     "format": "int32"
+     "type": "string"
     },
     "name": {
      "type": "string"
@@ -111,39 +110,6 @@
    "parameterOrder": [
     "id",
     "password"
-   ],
-   "returns": {
-    "$ref": "UserRecord"
-   },
-   "scopes": [
-    "https://www.googleapis.com/auth/userinfo.email"
-   ]
-  },
-  "userRecordEndpoint.save": {
-   "id": "userRecordEndpoint.save",
-   "parameters": {
-    "id": {
-     "type": "string",
-     "required": true
-    },
-    "name": {
-     "type": "string",
-     "required": true
-    },
-    "password": {
-     "type": "string",
-     "required": true
-    },
-    "regId": {
-     "type": "string",
-     "required": true
-    }
-   },
-   "parameterOrder": [
-    "id",
-    "name",
-    "password",
-    "regId"
    ],
    "returns": {
     "$ref": "UserRecord"

@@ -7,30 +7,23 @@ import com.example.Andy.myapplication.backend.service.RegistUserService;
 import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-/**
- * Created by Andy on 2015/12/2.
- */
-@ManagedBean
-@ViewScoped
+
 public class RegistUserBean implements Serializable {
 
 
     private RegistUserDTO dto = new RegistUserDTO();
 
 
-    @ManagedProperty(value = "#{registUserService}")
-    private transient RegistUserService registUserService;
+
+    private transient RegistUserService service;
 
     public String registUser() {
 
 
         try {
-            this.registUserService.regist(dto);
+            this.service.regist(dto);
             FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "新增成功", null);
             FacesContext.getCurrentInstance().addMessage(null, facesMsg);
         } catch (TaskBuiness e) {
@@ -42,12 +35,12 @@ public class RegistUserBean implements Serializable {
         return null;
     }
 
-    public RegistUserService getRegistUserService() {
-        return registUserService;
+    public RegistUserService getService() {
+        return service;
     }
 
-    public void setRegistUserService(RegistUserService registUserService) {
-        this.registUserService = registUserService;
+    public void setService(RegistUserService service) {
+        this.service = service;
     }
 
     public RegistUserDTO getDto() {

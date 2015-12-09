@@ -1,7 +1,5 @@
 package com.example.Andy.myapplication.backend.bean;
 
-import com.example.Andy.myapplication.backend.common.ExecutantFactory;
-import com.example.Andy.myapplication.backend.common.ExecutantType;
 import com.example.Andy.myapplication.backend.domain.SettingUserDTO;
 import com.example.Andy.myapplication.backend.service.SettingUserService;
 
@@ -9,33 +7,32 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  * Created by Andy on 2015/12/2.
  */
 
-@ManagedBean
-@ViewScoped
 public class SettingUserBean implements Serializable {
 
-    private static final Logger log = Logger.getLogger(SettingUserBean.class.getName());
+    private static final Logger LOG = Logger.getLogger(SettingUserBean.class.getName());
 
 
     private SettingUserDTO dto = new SettingUserDTO();
 
 
-    @ManagedProperty(value = "#{settingUserService}")
     private transient SettingUserService service;
 
-    private ExecutantType type;
 
     @PostConstruct
     public void init() {
 
-        this.type = ExecutantFactory.get();
+        LOG.info("init begin");
+
+        LOG.info("init end");
+
+
     }
 
 
@@ -47,25 +44,39 @@ public class SettingUserBean implements Serializable {
         this.dto = dto;
     }
 
+    public String setEditMode() {
+        this.dto.setEditMode(true);
+        return null;
+    }
+
     /**
      * 查詢使用者
+     *
      * @return
      */
     public String query() {
-        this.service.query(dto, type);
+        this.service.query(dto);
         return null;
     }
-    public String modfiy(){
-        this.service.modify(dto,type);
+
+    public String modfiy() {
+        this.service.modify(dto);
+        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "修改成功", null);
+        FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+        dto.setEditMode(false);
         return null;
     }
-    public String delete(){
-        this.service.delete(dto,type);
+
+    public String delete() {
+        this.service.delete(dto);
+        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "刪除成功", null);
+        FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+        dto.setEditMode(false);
         return null;
     }
 
     public static Logger getLog() {
-        return log;
+        return LOG;
     }
 
     public SettingUserService getService() {
@@ -76,11 +87,7 @@ public class SettingUserBean implements Serializable {
         this.service = service;
     }
 
-    public ExecutantType getType() {
-        return type;
-    }
-
-    public void setType(ExecutantType type) {
-        this.type = type;
+    public static Logger getLOG() {
+        return LOG;
     }
 }

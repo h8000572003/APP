@@ -15,40 +15,26 @@ import com.google.api.server.spi.config.Named;
                 packagePath = ""
         )
 )
+
 public class UserRecordEndpoint {
 
-    @ApiMethod(name = "getUserRecord", path = "userInfo/get")
+
+    @ApiMethod(name = "getUserRecord")
     public UserRecord getUserInfo(
             //
             @Named("id") String id,
             @Named("password") String password) {
 
-        return OfyService.ofy().load().type(UserRecord.class)//
-                .filter("id=", id)//
-                .filter("password", password).first().now();
+        final UserRecord userRecord = OfyService
+                .ofy().load().type(UserRecord.class).id(id).now();
+
+        if (userRecord == null) {
+            return null;
+        }
+        return userRecord.getPassword().equals(password) ? userRecord : null;
+
 
     }
 
-    @ApiMethod(name = "save", path = "userInfo/save")
-    public UserRecord save(
-            //
-            @Named("id") String id,
-            @Named("password") String password,
-            @Named("name") String name,
-            @Named("regId") String regId
-    ) {
-
-        UserRecord userRecord = new UserRecord();
-        userRecord.setId(id);
-        userRecord.setLevel(-1);
-        userRecord.setName(name);
-        userRecord.setPassword(password);
-        userRecord.setRegId(regId);
-
-
-        OfyService.ofy().save().entity(userRecord).now();
-
-        return userRecord;
-    }
 
 }
