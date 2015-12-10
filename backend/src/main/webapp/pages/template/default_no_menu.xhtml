@@ -2,54 +2,53 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>POS</title>
+    <title>POS</title>
 
 
-
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 
-	<!-- 最新編譯和最佳化的 CSS -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
 
-	<link rel="stylesheet"
-		href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css" />
-	<!-- 選擇性佈景主題 -->
+    <link rel="stylesheet"
+          href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
+    <!-- 選擇性佈景主題 -->
 
 
-
-	<!-- 最新編譯和最佳化的 JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.mi
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.mi
 	n.js"></script>
-	<h:outputStylesheet library="css" name="default.css"></h:outputStylesheet>
+    <h:outputStylesheet library="css" name="default.css"></h:outputStylesheet>
 
 </h:head>
 <h:body>
 
 
+    <b:navBar brand="POS" inverse="true" fixed="top">
 
-	<div class="message">
-		<p:growl id="msgs" showDetail="false" />
-	</div>
+    </b:navBar>
 
-	<b:container fluid="true">
+    <div class="message">
+        <p:growl id="msgs" showDetail="false"/>
+    </div>
 
-		<div class="Main">
-			<ui:insert name="content">
-			</ui:insert>
+    <b:container fluid="true">
 
-		</div>
+        <div class="Main">
+            <ui:insert name="content">
+            </ui:insert>
 
-	</b:container>
+        </div>
+
+    </b:container>
 
 </h:body>
 </html>

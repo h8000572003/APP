@@ -27,11 +27,32 @@ dependencies {
     compile 'com.google.appengine:appengine-endpoints-deps:1.9.28'
     compile 'javax.servlet:servlet-api:2.5'
     compile 'javax.servlet:jstl:1.2'
+    compile 'commons-el:commons-el:1.0'
+    compile 'javax.el:javax.el-api:3.0.0'
+    compile 'org.jboss.spec.javax.el:jboss-el-api_2.2_spec:1.0.5.Final'
+
+
+
     compile 'com.googlecode.objectify:objectify:5.1.9'
     compile 'com.ganyo:gcm-server:1.0.2'
 
     compile 'org.apache.myfaces.core:myfaces-api:2.2.8'
+//
     compile 'org.apache.myfaces.core:myfaces-impl:2.2.8'
+//    compile 'org.jboss.weld.servlet:weld-servlet:2.3.1.Final'
+
+//    compile 'org.apache.openwebbeans:openwebbeans-impl:1.6.2'
+//    compile 'org.apache.openwebbeans:openwebbeans-jsf:1.6.2'
+////    compile 'org.apache.openwebbeans:openwebbeans-web:1.6.2'
+//    compile 'org.apache.openwebbeans:openwebbeans-spi:1.6.2'
+//    compile 'org.apache.openwebbeans:openwebbeans-el22:1.6.2'
+
+//    compile 'javax:javaee-api:7.0'
+
+//    compile 'com.sun.faces:jsf-api:2.2.4'
+//
+//    compile 'com.sun.faces:jsf-impl:2.2.4'
+
     compile 'net.bootsfaces:bootsfaces:0.7.0'
     compile 'org.primefaces:primefaces:5.3'
 
@@ -46,6 +67,9 @@ dependencies {
     compile 'org.springframework:spring-web:3.1.1.RELEASE'
     compile 'org.springframework:spring-webmvc:3.1.1.RELEASE'
 
+//    compile 'org.hibernate:hibernate-validator:5.2.2.Final'
+
+
     compile 'org.springframework.security:spring-security-core:3.1.1.RELEASE'
     compile 'org.springframework.security:spring-security-config:3.1.1.RELEASE'
     compile 'org.springframework.security:spring-security-web:3.1.1.RELEASE'
@@ -55,6 +79,13 @@ dependencies {
 
 
     compile 'org.apache.commons:commons-lang3:3.4'
+
+    compile 'commons-codec:commons-codec:1.10'
+    compile 'commons-collections:commons-collections:3.2.2'
+    compile 'commons-digester:commons-digester:2.1'
+    compile 'commons-discovery:commons-discovery:0.5'
+    compile 'commons-logging:commons-logging:1.2'
+
 
 }
 

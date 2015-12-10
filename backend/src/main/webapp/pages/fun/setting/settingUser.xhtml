@@ -31,8 +31,8 @@
                 </b:panelGrid>
 
 
-                <b:commandButton value="查詢"
-                                 action="#{settingUserBean.query}"></b:commandButton>
+                <h:commandButton value="查詢" update="myForm"
+                                 action="#{settingUserBean.query}"></h:commandButton>
 
 
                 <p:dataTable var="user" value="#{settingUserBean.dto.queryList}"

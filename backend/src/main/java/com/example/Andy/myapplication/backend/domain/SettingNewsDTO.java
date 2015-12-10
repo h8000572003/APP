@@ -2,12 +2,13 @@ package com.example.Andy.myapplication.backend.domain;
 
 import com.example.Andy.myapplication.backend.entry.NewsRecord;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Andy on 2015/12/9.
  */
-public class SettingNewsDTO {
+public class SettingNewsDTO implements Serializable{
     private List<NewsRecord> newsRecords;
 
     private NewsRecord record=new NewsRecord();

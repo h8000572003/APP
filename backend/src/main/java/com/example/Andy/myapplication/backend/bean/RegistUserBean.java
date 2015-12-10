@@ -5,12 +5,17 @@ import com.example.Andy.myapplication.backend.exception.TaskBuiness;
 import com.example.Andy.myapplication.backend.service.RegistUserService;
 
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 
 public class RegistUserBean implements Serializable {
+
+    private static final Logger LOG = Logger.getLogger(RegistUserBean.class.getName());
+
+
 
 
     private RegistUserDTO dto = new RegistUserDTO();
@@ -19,6 +24,12 @@ public class RegistUserBean implements Serializable {
 
     private transient RegistUserService service;
 
+
+
+    public void RegistUserBean() {
+        LOG.info("init");
+
+    }
     public String registUser() {
 
 

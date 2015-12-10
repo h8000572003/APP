@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
-    xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-          http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+<faces-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
     <application>
         <el-resolver>
@@ -25,7 +26,7 @@
         <managed-bean-name>settingUserBean</managed-bean-name>
         <managed-bean-class>com.example.Andy.myapplication.backend.bean.SettingUserBean
         </managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-scope>view</managed-bean-scope>
         <managed-property>
             <property-name>service</property-name>
             <value>#{settingUserService}</value>
@@ -57,5 +58,14 @@
         </managed-property>
 
     </managed-bean>
+
+
+    <lifecycle>
+        <phase-listener>com.example.Andy.myapplication.backend.jsf.SessionPhaseListener
+        </phase-listener>
+    </lifecycle>
+    <!--<lifecycle>-->
+    <!--<phase-listener>com.example.Andy.myapplication.backend.jsf.GaeSession</phase-listener>-->
+    <!--</lifecycle>-->
 
 </faces-config>

@@ -15,7 +15,6 @@
                 <h3>使用者註冊</h3>
 
 
-
                 <b:panelGrid colSpans="2,10">
                     <h:outputLabel value="帳號："/>
                     <b:inputText span="10" value="#{registUserBean.dto.id}"></b:inputText>
@@ -24,7 +23,7 @@
                     <h:outputLabel value="名稱："/>
                     <b:inputText span="10" value="#{registUserBean.dto.name}"></b:inputText>
                     <h:outputLabel value="權限:"/>
-                    <b:selectOneMenu span="10" value="#{registUserBean.dto.level}" id="level">
+                    <b:selectOneMenu span="10" value="#{registUserBean.dto.level}">
                         <f:selectItem itemLabel="管理員" itemValue="-1"/>
                         <f:selectItem itemLabel="老闆" itemValue="1"/>
                         <f:selectItem itemLabel="員工" itemValue="2"/>

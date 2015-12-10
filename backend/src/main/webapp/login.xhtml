@@ -3,6 +3,7 @@
 
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core"
 
 >
@@ -16,7 +17,8 @@
                 <div class="col-lg-12">
 
 
-                    <h1>登入</h1>
+                    <h1>後端系統</h1>
+                    <h3>登入</h3>
 
                     <c:if test="${param.error != null}">
                         <font color="red">
@@ -26,19 +28,22 @@
 
                     <form method="post" action="j_spring_security_check">
 
+
                         <label>
                             帳號:
                         </label>
-                        <input type="text" name="j_username"/>
+                        <!--<input type="text" name="j_username"/>-->
+                        <b:inputText id="j_username" name="j_username"></b:inputText>
                         <br/>
                         <label>
                             密碼:
                         </label>
-                        <input type="password" name="j_password"/>
+
+                        <b:inputText id="j_password" name="j_password"></b:inputText>
                         <br/>
                         <input type="checkbox" name="_spring_security_remember_me"/>紀錄密碼
                         <br/>
-                        <input class="btn btn-default btn-primary btn-group btn-lg" type="submit"/>
+                        <input class="btn btn-default btn-primary btn-group btn-lg" name="登入" type="submit"/>
                     </form>
 
 
