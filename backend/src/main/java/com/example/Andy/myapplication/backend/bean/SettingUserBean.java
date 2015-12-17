@@ -1,12 +1,7 @@
 package com.example.Andy.myapplication.backend.bean;
 
-import com.example.Andy.myapplication.backend.OfyService;
 import com.example.Andy.myapplication.backend.domain.SettingUserDTO;
-import com.example.Andy.myapplication.backend.entry.UserRecord;
 import com.example.Andy.myapplication.backend.service.SettingUserService;
-import com.googlecode.objectify.cmd.LoadType;
-
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.util.logging.Logger;
@@ -14,7 +9,7 @@ import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -23,7 +18,7 @@ import javax.faces.context.FacesContext;
 
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class SettingUserBean implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(SettingUserBean.class.getName());
@@ -56,27 +51,14 @@ public class SettingUserBean implements Serializable {
      * @return
      */
     public String query() {
-        //  this.service.query(dto);
-
-        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO,
-                "service 1: " + service + "\n"
+        this.service.query(dto);
 
 
-                , null);
-        FacesContext.getCurrentInstance().addMessage(null, facesMsg);
-
-        final LoadType<UserRecord> loadType =
-                OfyService.ofy().load().type(UserRecord.class);
-
-        if (StringUtils.isNotBlank(dto.getId())) {
-            loadType.id(dto.getId());
-        }
-        dto.setQueryList(loadType.list());
         return null;
     }
 
     public String modfiy() {
-//        this.service.modify(dto);
+        this.service.modify(dto);
         FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "修改成功", null);
         FacesContext.getCurrentInstance().addMessage(null, facesMsg);
         dto.setEditMode(false);
@@ -84,7 +66,7 @@ public class SettingUserBean implements Serializable {
     }
 
     public String delete() {
-//        this.service.delete(dto);
+        this.service.delete(dto);
         FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "刪除成功", null);
         FacesContext.getCurrentInstance().addMessage(null, facesMsg);
         dto.setEditMode(false);

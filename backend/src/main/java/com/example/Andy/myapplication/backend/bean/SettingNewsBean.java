@@ -25,9 +25,6 @@ public class SettingNewsBean implements Serializable {
     private static final Logger LOG = Logger.getLogger(SettingUserBean.class.getName());
 
 
-    @ManagedProperty(value = "#{userBean}")
-    private UserBean userBean;
-
     private SettingNewsDTO dto = new SettingNewsDTO();
 
 
@@ -37,12 +34,14 @@ public class SettingNewsBean implements Serializable {
     public SettingNewsBean() {
 
         LOG.info("init");
+
+        dto.getRecord().setYyyymmdd(CommonUtils.getNowDate());
+
     }
 
     public String addMessage() {
 
 
-        dto.getRecord().setYyyymmdd(CommonUtils.getNowDate());
         this.service.addMessage(dto);
         FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "新增成功", null);
         FacesContext.getCurrentInstance().addMessage(null, facesMsg);
@@ -76,11 +75,5 @@ public class SettingNewsBean implements Serializable {
         this.service = service;
     }
 
-    public UserBean getUserBean() {
-        return userBean;
-    }
 
-    public void setUserBean(UserBean userBean) {
-        this.userBean = userBean;
-    }
 }

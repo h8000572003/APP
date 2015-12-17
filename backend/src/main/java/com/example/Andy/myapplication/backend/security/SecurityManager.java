@@ -1,5 +1,8 @@
 package com.example.Andy.myapplication.backend.security;
 
+import com.example.Andy.myapplication.backend.OfyService;
+import com.example.Andy.myapplication.backend.entry.UserRecord;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +18,10 @@ import java.util.logging.Logger;
 @Component("securityManager")
 public class SecurityManager implements UserDetailsService {
 
+
+    private String DEF_ID = "X1234";
+    private String DEF_PASSWORD = "X1234";
+
     private static final Logger log = Logger.getLogger(SecurityManager.class.getName());
 
 
@@ -26,15 +33,36 @@ public class SecurityManager implements UserDetailsService {
     }
 
     private User getUser(String id) {
-        return new User(id, "123");
 
-//        final UserRecord userRecord =
-//                OfyService.ofy().load().type(UserRecord.class).id(id).now();
-//
-//        if (userRecord == null) {
-//            throw new UsernameNotFoundException("User " + id
-//                    + " has no GrantedAuthority");
-//        }
-//        return new User(userRecord.getId(), userRecord.getPassword());
+        if (this.isAccountEmpty()) {
+            if (id.equals(DEF_ID)) {
+                return new User(DEF_ID, DEF_PASSWORD);
+            }
+
+
+        } else {
+            User user = null;
+            final UserRecord userRecord = OfyService.ofy().load().type(UserRecord.class).id(id).now();
+
+            if (userRecord == null) {
+                throw new UsernameNotFoundException("User " + id
+                        + " has no GrantedAuthority");
+            }
+            return new User(userRecord.getId(), userRecord.getPassword());
+
+        }
+
+        throw new UsernameNotFoundException("User " + id
+                + " has no GrantedAuthority");
     }
+
+    /**
+     * 判斷是否有使用者資料存於資料庫
+     *
+     * @return
+     */
+    private boolean isAccountEmpty() {
+        return OfyService.ofy().load().type(UserRecord.class).count() == 0;
+    }
+
 }
