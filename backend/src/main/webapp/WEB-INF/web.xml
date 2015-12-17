@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+    version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <filter>
         <filter-name>ObjectifyFilter</filter-name>
         <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
@@ -22,6 +20,25 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     </session-config>
 
 
+    <!--
+          We need to set annotation lifecycyle provider manually as org.apache.myfaces.config.annotation.NoInjectionAnnotationLifecycleProvider.
+          Other providers use some classes that are restricted on Google App Engine.
+       -->
+    <context-param>
+        <param-name>org.apache.myfaces.config.annotation.LifecycleProvider</param-name>
+        <param-value>org.apache.myfaces.config.annotation.NoInjectionAnnotationLifecycleProvider
+        </param-value>
+    </context-param>
+
+    <!--
+        Need to set a secret to avoid javax.crypto.BadPaddingException.
+        "param-value" must be Base64 encoded.
+        More details: http://wiki.apache.org/myfaces/Secure_Your_Application
+     -->
+    <context-param>
+        <param-name>org.apache.myfaces.SECRET</param-name>
+        <param-value>NzY1NDMyMTA=</param-value>
+    </context-param>
 
 
     <!-- JSF mapping -->
@@ -88,9 +105,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 
     <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>
-        <servlet-class>
-            org.springframework.web.servlet.DispatcherServlet
-        </servlet-class>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -99,22 +118,21 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            /WEB-INF/mvc-dispatcher-servlet.xml
-
-
+            /WEB-INF/manage_beans.xml
+            /WEB-INF/security-config.xml
         </param-value>
     </context-param>
+
 
     <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
     </listener>
-
-
 
 
     <listener>

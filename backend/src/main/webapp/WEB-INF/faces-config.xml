@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    version="2.0"
+<faces-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
     xmlns="http://java.sun.com/xml/ns/javaee"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
@@ -10,54 +9,7 @@
         </el-resolver>
     </application>
 
-    <managed-bean>
-        <managed-bean-name>registUserBean</managed-bean-name>
-        <managed-bean-class>com.example.Andy.myapplication.backend.bean.RegistUserBean
-        </managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-        <managed-property>
-            <property-name>service</property-name>
-            <value>#{registUserService}</value>
-        </managed-property>
 
-    </managed-bean>
-
-    <managed-bean>
-        <managed-bean-name>settingUserBean</managed-bean-name>
-        <managed-bean-class>com.example.Andy.myapplication.backend.bean.SettingUserBean
-        </managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-        <managed-property>
-            <property-name>service</property-name>
-            <value>#{settingUserService}</value>
-        </managed-property>
-
-    </managed-bean>
-
-
-    <managed-bean>
-        <managed-bean-name>settingNewsBean</managed-bean-name>
-        <managed-bean-class>com.example.Andy.myapplication.backend.bean.SettingNewsBean
-        </managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-        <managed-property>
-            <property-name>service</property-name>
-            <value>#{settingNewsService}</value>
-        </managed-property>
-
-    </managed-bean>
-
-    <managed-bean>
-        <managed-bean-name>messageBean</managed-bean-name>
-        <managed-bean-class>com.example.Andy.myapplication.backend.bean.MessageBean
-        </managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-        <managed-property>
-            <property-name>service</property-name>
-            <value>#{messageService}</value>
-        </managed-property>
-
-    </managed-bean>
 
 
     <lifecycle>

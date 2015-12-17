@@ -1,1 +1,1 @@
-include ':app', ':backend', ':springBackend'
+include ':app', ':backend'

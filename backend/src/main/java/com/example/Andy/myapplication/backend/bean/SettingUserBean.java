@@ -12,6 +12,9 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -19,8 +22,8 @@ import javax.faces.context.FacesContext;
  */
 
 
-//@ManagedBean
-//@javax.faces.bean.ViewScoped
+@ManagedBean
+@RequestScoped
 public class SettingUserBean implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(SettingUserBean.class.getName());
@@ -29,17 +32,8 @@ public class SettingUserBean implements Serializable {
     private SettingUserDTO dto = new SettingUserDTO();
 
 
-    //    @ManagedProperty(value = "#{settingUserService}")
-//    @Inject
+    @ManagedProperty(value = "#{settingUserService}")
     private transient SettingUserService service;
-
-
-    //    @ManagedProperty("#{settingUserServiceBean}")
-//    private transient SettingUserServiceBean service2;
-//
-////
-//    @ManagedProperty("settingUserServiceBean")
-//    private transient SettingUserServiceBean settingUserServiceBean;
 
 
     public SettingUserDTO getDto() {
@@ -65,7 +59,7 @@ public class SettingUserBean implements Serializable {
         //  this.service.query(dto);
 
         FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO,
-                "select: " + service
+                "service 1: " + service + "\n"
 
 
                 , null);
@@ -109,4 +103,10 @@ public class SettingUserBean implements Serializable {
     public void setService(SettingUserService service) {
         this.service = service;
     }
+
+    public SettingUserService getService() {
+        return service;
+    }
+
+
 }

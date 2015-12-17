@@ -8,6 +8,9 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -15,16 +18,20 @@ import javax.faces.context.FacesContext;
  */
 
 
-
-
+@ManagedBean
+@RequestScoped
 public class SettingNewsBean implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(SettingUserBean.class.getName());
 
 
+    @ManagedProperty(value = "#{userBean}")
+    private UserBean userBean;
+
     private SettingNewsDTO dto = new SettingNewsDTO();
 
 
+    @ManagedProperty(value = "#{settingNewsService}")
     private transient SettingNewsService service;
 
     public SettingNewsBean() {
@@ -67,5 +74,13 @@ public class SettingNewsBean implements Serializable {
 
     public void setService(SettingNewsService service) {
         this.service = service;
+    }
+
+    public UserBean getUserBean() {
+        return userBean;
+    }
+
+    public void setUserBean(UserBean userBean) {
+        this.userBean = userBean;
     }
 }

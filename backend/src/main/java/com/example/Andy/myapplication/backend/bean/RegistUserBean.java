@@ -8,9 +8,13 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-
+@ManagedBean
+@RequestScoped
 public class RegistUserBean implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(RegistUserBean.class.getName());
@@ -22,6 +26,7 @@ public class RegistUserBean implements Serializable {
 
 
 
+    @ManagedProperty(value = "#{registUserService}")
     private transient RegistUserService service;
 
 
