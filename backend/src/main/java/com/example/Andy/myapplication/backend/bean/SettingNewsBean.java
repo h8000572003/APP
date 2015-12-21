@@ -1,12 +1,14 @@
 package com.example.Andy.myapplication.backend.bean;
 
-import com.example.Andy.myapplication.backend.common.CommonUtils;
+import com.example.Andy.myapplication.backend.common.ExecutantType;
 import com.example.Andy.myapplication.backend.domain.SettingNewsDTO;
 import com.example.Andy.myapplication.backend.service.SettingNewsService;
+import com.example.Andy.myapplication.backend.service.UserService;
 
 import java.io.Serializable;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -28,15 +30,22 @@ public class SettingNewsBean implements Serializable {
     private SettingNewsDTO dto = new SettingNewsDTO();
 
 
+    private ExecutantType executantType;
+
+    @ManagedProperty(value = "#{userService}")
+    private transient UserService userService;
+
     @ManagedProperty(value = "#{settingNewsService}")
     private transient SettingNewsService service;
 
-    public SettingNewsBean() {
 
-        LOG.info("init");
+    @PostConstruct
+    public void afterInit() {
+        this.executantType = userService.getExecutant();
 
-        dto.getRecord().setYyyymmdd(CommonUtils.getNowDate());
 
+        dto.getRecord().setName(this.executantType.getName());
+        dto.getRecord().setWriteId(this.executantType.getId());
     }
 
     public String addMessage() {
@@ -76,4 +85,19 @@ public class SettingNewsBean implements Serializable {
     }
 
 
+    public ExecutantType getExecutantType() {
+        return executantType;
+    }
+
+    public void setExecutantType(ExecutantType executantType) {
+        this.executantType = executantType;
+    }
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 }

@@ -3,60 +3,71 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:b="http://bootsfaces.net/ui" xmlns:h="http://java.sun.com/jsf/html"
 >
 
 <ui:composition template="/pages/template/default.xhtml">
 
     <ui:define name="content">
         <div>
-
+            <h1>
+                專頁資訊
+            </h1>
+            <p>地址
+                234 台北市永和區復興街四號
+                營業時間
+                週一 - 週日：
+                8:00 到 20:00</p>
 
             <b:well>
-                <h3>
-                    <strong>專頁資訊</strong>
-                </h3>
-                <!--地址-->
-                <!--234 台北市永和區復興街四號-->
-                <!--營業時間-->
-                <!--週一 - 週日：-->
-                <!--8:00 到 20:00-->
 
-                <h4>
-                    <strong>簡短說明</strong>
-                </h4>
-                <!--小吃攤的價格,餐廳的享受-->
-                <!--美食-->
-                <!--中式、小吃攤和台灣料理-->
-                <!--公共運輸-->
-                <!--捷運頂溪站一號出口,公車 57, 262, 304 皆有到達-->
-                <!--付款方式-->
-                <!--<strong>只收現金</strong>-->
-                <!--服務內容-->
-                <!--歡迎散客-->
-                <!--特長-->
-                <!--早餐、午餐和晚餐-->
-                <!--電話號碼-->
-                <!--0229240708-->
 
+                <h2>
+                    簡短說明
+                </h2>
+                <p>
+                    小吃攤的價格,餐廳的享受
+                    美食
+                    中式、小吃攤和台灣料理
+                    公共運輸
+                    捷運頂溪站一號出口,公車 57, 262, 304 皆有到達
+                    付款方式
+                    <strong>只收現金</strong>
+                    服務內容
+                    歡迎散客
+                    特長
+                    早餐、午餐和晚餐
+                    電話號碼
+                    0229240708
+                </p>
 
             </b:well>
+            <h:form>
+
+                <ui:repeat var="item" value="#{messageBean.dto.messages}">
 
 
-            <ui:repeat var="item" value="#{messageBean.dto.messages}">
-
-                <b:panel title="#{item.yyyymmdd}"
-                         collapsible="false" collapsed="false">
-
-                    #{item.content}
+                    <b:panel title="#{item.yyyymmdd}"
+                             collapsible="false" collapsed="false">
 
 
-                </b:panel>
+                        <h1>
+                            <h:outputLabel value="#{item.title}"/>
+                            <b:commandButton value="刪除訊息" action="#{messageBean.}"
+                            ></b:commandButton >
+                        </h1>
+                        <p>
+                            <h:outputLabel value="#{item.content}"/>
+
+                        </p>
 
 
-            </ui:repeat>
+                    </b:panel>
 
 
+                </ui:repeat>
+
+            </h:form>
         </div>
     </ui:define>
 

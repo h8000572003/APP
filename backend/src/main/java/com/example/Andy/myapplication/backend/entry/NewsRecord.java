@@ -16,6 +16,9 @@ public class NewsRecord implements Serializable {
     @Id
     Long id;
 
+    /**
+     * 內容
+     */
     @Unindex
     private String content;
 
@@ -25,15 +28,30 @@ public class NewsRecord implements Serializable {
      */
 
     @Index
-    private String title="";
+    private String title = "";
     /**
      * 撰寫人名稱
      */
     @Index
     private String name;
 
+    /**
+     * 填寫人
+     */
     @Index
     private String writeId;
+
+    /**
+     * 發佈時間
+     */
+    @Index
+    private String beginDate = "";
+
+    /**
+     * 發佈日期
+     */
+    @Index
+    private String endDate = "";
 
     public String getName() {
         return name;
@@ -44,15 +62,15 @@ public class NewsRecord implements Serializable {
     }
 
 
-
     /**
      * 權限
      */
     @Unindex
     private int leavel;
 
-    @Unindex
-    private String delete;
+    /**
+     * 建立日期
+     */
 
     @Index
     private String yyyymmdd;
@@ -82,13 +100,6 @@ public class NewsRecord implements Serializable {
         this.writeId = writeId;
     }
 
-    public String getDelete() {
-        return delete;
-    }
-
-    public void setDelete(String delete) {
-        this.delete = delete;
-    }
 
     public int getLeavel() {
         return leavel;
@@ -112,5 +123,21 @@ public class NewsRecord implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getBeginDate() {
+        return beginDate;
+    }
+
+    public void setBeginDate(String beginDate) {
+        this.beginDate = beginDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 }

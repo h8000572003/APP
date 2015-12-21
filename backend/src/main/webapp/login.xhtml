@@ -3,9 +3,7 @@
 
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:h="http://java.sun.com/jsf/html"
 
 >
 
@@ -13,71 +11,52 @@
 
     <ui:define name="content">
 
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-lg-12">
+
+        <form class="form-horizontal" role="form" method="post" action="j_spring_security_check">
 
 
-                    <h1>後端系統</h1>
-                    <h3>登入</h3>
-
+            <div class="form-group">
+                <div class="col-sm-12">
                     <c:if test="${param.error != null}">
                         <font color="red">
                             <h2>帳號或密碼錯誤!</h2>
                         </font>
                     </c:if>
-
-                    <form method="post" action="j_spring_security_check">
-
-
-                        <label>
-                            帳號:
-                        </label>
-                        <!--<input type="text" name="j_username"/>-->
-                        <b:inputText id="j_username" name="j_username"></b:inputText>
-                        <br/>
-                        <label>
-                            密碼:
-                        </label>
-
-                        <b:inputSecret id="j_password" name="j_password"></b:inputSecret>
-                        <br/>
-                        <input type="checkbox" name="_spring_security_remember_me"/>紀錄密碼
-                        <br/>
-
-                        <input class="btn btn-default btn-primary btn-group btn-lg" name="登入"
-                               type="submit"/>
+                </div>
+                <div class="col-sm-12">
+                    <h1>登入</h1>
+                </div>
 
 
-                    </form>
-
-
-                    <!--<h:form id="loginForm" prependId="false">-->
-                        <!--&lt;!&ndash; Messages must be global here, to show bad credentials &ndash;&gt;-->
-                        <!--<h:messages globalOnly="true"/>-->
-
-                        <!--&lt;!&ndash; Id's must not be changed to support spring security check &ndash;&gt;-->
-                        <!--<h:panelGrid columns="3">-->
-                            <!--<h:outputLabel for="j_username" value="User: * " />-->
-                            <!--<h:inputText id="j_username" required="true" label="username" />-->
-                            <!--<h:message for="j_username" display="text" style="color:red"/>-->
-
-                            <!--<h:outputLabel for="j_password" value="Password: * " />-->
-                            <!--<h:inputSecret id="j_password" label="password" required="true" />-->
-                            <!--<h:message for="j_password" display="text" style="color:red"/>-->
-
-                            <!--<h:outputLabel for="_spring_security_remember_me" value="Remember me: " />-->
-                            <!--<h:selectBooleanCheckbox    id="_spring_security_remember_me" />-->
-                        <!--</h:panelGrid>-->
-
-                        <!--<h:commandButton type="submit" id="login" value="Login"-->
-                                         <!--action="#{loginController.doLogin}" />-->
-                    <!--</h:form>-->
-
-
+                <label for="inputEmail3" class="col-sm-2 control-label">電子郵件</label>
+                <div class="col-sm-10">
+                    <input type="email" name="j_username" class="form-control" id="inputEmail3"
+                           placeholder="輸入電子郵件"/>
                 </div>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">密碼</label>
+                <div class="col-sm-10">
+                    <input type="password" name="j_password" class="form-control"
+                           id="inputPassword3"
+                           placeholder="密碼"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input name="_spring_security_remember_me" type="checkbox"/> 記住我
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">登入</button>
+                </div>
+            </div>
+        </form>
 
 
     </ui:define>

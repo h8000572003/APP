@@ -3,6 +3,7 @@ package com.example.Andy.myapplication.backend.service;
 import com.example.Andy.myapplication.backend.OfyService;
 import com.example.Andy.myapplication.backend.domain.MessageDTO;
 import com.example.Andy.myapplication.backend.entry.NewsRecord;
+import com.googlecode.objectify.cmd.Query;
 
 import org.springframework.stereotype.Service;
 
@@ -16,10 +17,13 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public void loadTodayNews(MessageDTO dto) {
 
-        List<NewsRecord> newsRecords =
-                OfyService.ofy().load().type(NewsRecord.class)//
-                        .filter("yyyymmdd", dto.getYyyymmdd())
 
+        Query<NewsRecord> q = OfyService.ofy().load().type(NewsRecord.class);
+
+        q = q.filter("beginDate >= ", dto.getYyyymmdd());
+
+        List<NewsRecord> newsRecords =
+                q
                         .list();
 
 

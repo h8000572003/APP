@@ -4,14 +4,14 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://java.sun.com/jsf/core"
 >
 
 <ui:composition template="/pages/template/default.xhtml">
 
     <p:remoteCommand name="updateView" update="myForm"></p:remoteCommand>
     <ui:define name="content">
-        <h:form >
+        <h:form>
 
             <b:well>
                 <h3>使用者查詢與設定</h3>
@@ -21,7 +21,7 @@
 
                 <b:panelGrid colSpans="2,10">
                     <h:outputLabel value="建立人員："/>
-                    <b:inputText span="10"
+                    <b:inputText span="10" disabled="true"
                                  value="#{settingNewsBean.dto.record.name}"></b:inputText>
 
 
@@ -30,8 +30,21 @@
                                  value="#{settingNewsBean.dto.record.title}"></b:inputText>
 
                     <h:outputLabel value="內容："/>
-                    <b:inputText span="10" fieldSize="lg"
+                    <b:inputText span="10"
                                  value="#{settingNewsBean.dto.record.content}"></b:inputText>
+
+
+                    <h:outputLabel value="顯示日期："/>
+                    <b:datepicker attribute="icon-popup"
+                                  value="#{settingNewsBean.dto.record.beginDate}" span="10">
+
+                    </b:datepicker>
+
+                    <h:outputLabel value="結束日期："/>
+                    <b:datepicker attribute="icon-popup"
+                                  value="#{settingNewsBean.dto.record.endDate}" span="10">
+
+                    </b:datepicker>
 
 
                 </b:panelGrid>

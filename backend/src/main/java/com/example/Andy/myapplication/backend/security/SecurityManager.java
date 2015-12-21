@@ -36,6 +36,14 @@ public class SecurityManager implements UserDetailsService {
 
         if (this.isAccountEmpty()) {
             if (id.equals(DEF_ID)) {
+
+
+                final UserRecord userRecord = new UserRecord();
+                userRecord.setId(DEF_ID);
+                userRecord.setName("ADMIN");
+                userRecord.setPassword(DEF_PASSWORD);
+                userRecord.setLevel("0");
+                OfyService.ofy().save().entity(userRecord).now();
                 return new User(DEF_ID, DEF_PASSWORD);
             }
 

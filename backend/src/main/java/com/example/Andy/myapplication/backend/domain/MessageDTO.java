@@ -11,6 +11,8 @@ import java.util.List;
  * Created by Andy on 2015/12/9.
  */
 public class MessageDTO implements Serializable {
+
+
     private String yyyymmdd;
 
     public String getYyyymmdd() {
@@ -25,6 +27,17 @@ public class MessageDTO implements Serializable {
 
     public List<NewsRecord> getMessages() {
         return messages;
+    }
+
+    private NewsRecord selectNewsRecord;
+
+
+    public NewsRecord getSelectNewsRecord() {
+        return selectNewsRecord;
+    }
+
+    public void setSelectNewsRecord(NewsRecord selectNewsRecord) {
+        this.selectNewsRecord = selectNewsRecord;
     }
 
     public void setMessages(List<NewsRecord> messages) {

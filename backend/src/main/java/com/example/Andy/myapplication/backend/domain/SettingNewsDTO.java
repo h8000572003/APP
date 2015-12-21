@@ -11,7 +11,7 @@ import java.util.List;
 public class SettingNewsDTO implements Serializable{
     private List<NewsRecord> newsRecords;
 
-    private NewsRecord record=new NewsRecord();
+    private SettingNewsItemDTO record=new SettingNewsItemDTO();
 
     public List<NewsRecord> getNewsRecords() {
         return newsRecords;
@@ -21,11 +21,11 @@ public class SettingNewsDTO implements Serializable{
         this.newsRecords = newsRecords;
     }
 
-    public NewsRecord getRecord() {
+    public SettingNewsItemDTO getRecord() {
         return record;
     }
 
-    public void setRecord(NewsRecord record) {
+    public void setRecord(SettingNewsItemDTO record) {
         this.record = record;
     }
 }

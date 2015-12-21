@@ -16,4 +16,8 @@ public class CommonUtils {
     public static String getNowDate() {
         return sdf.format(new Date());
     }
+    public static String getStringDate(Date date) {
+        return sdf.format(date);
+
+    }
 }
