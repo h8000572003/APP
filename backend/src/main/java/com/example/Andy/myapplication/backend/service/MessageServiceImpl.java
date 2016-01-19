@@ -29,4 +29,11 @@ public class MessageServiceImpl implements MessageService {
 
         dto.setMessages(newsRecords);
     }
+
+    @Override
+    public void deleteNews(MessageDTO dto) {
+
+
+        OfyService.ofy().delete().entities(dto.getSelectNewsRecord()).now();
+    }
 }

@@ -3,7 +3,6 @@ package com.example.Andy.myapplication.backend.bean;
 import com.example.Andy.myapplication.backend.common.CommonUtils;
 import com.example.Andy.myapplication.backend.common.ExecutantType;
 import com.example.Andy.myapplication.backend.domain.MessageDTO;
-import com.example.Andy.myapplication.backend.entry.NewsRecord;
 import com.example.Andy.myapplication.backend.service.MessageService;
 import com.example.Andy.myapplication.backend.service.UserService;
 
@@ -60,9 +59,9 @@ public class MessageBean implements Serializable {
     }
 
 
-    public void deletMessage(NewsRecord record) {
-        dto.setSelectNewsRecord(record);
-
+    public void delMessage(Object record) {
+//        dto.setSelectNewsRecord(record);
+        this.service.deleteNews(dto);
     }
 
     public static Logger getLOG() {
